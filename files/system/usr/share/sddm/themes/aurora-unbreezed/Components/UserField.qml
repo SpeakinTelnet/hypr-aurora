@@ -7,7 +7,6 @@ TextField {
   width: inputWidth
   selectByMouse: true
   echoMode: TextInput.Normal
-  selectionColor: "#6C7086"
   renderType: Text.NativeRendering
   font {
     family: config.Font
@@ -19,8 +18,8 @@ TextField {
   placeholderText: "Username"
   text: userModel.lastUser
   background: Rectangle {
-    id: userFieldBackground
     color: "#313244"
+    opacity: 0.1
     radius: 3
   }
   states: [
@@ -28,16 +27,16 @@ TextField {
       name: "focused"
       when: userField.activeFocus
       PropertyChanges {
-        target: userFieldBackground
-        color: "#45475A"
+        target: userField
+        color: "#979eb6ff"
       }
     },
     State {
       name: "hovered"
       when: userField.hovered
       PropertyChanges {
-        target: userFieldBackground
-        color: "#45475A"
+        target: userField
+        color: "#979eb6ff"
       }
     }
   ]
