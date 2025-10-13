@@ -1,0 +1,55 @@
+---
+name: hypr-aurora
+description: This is based on Aurora(dx) with the single goal to make it hyprland based.
+
+base-image: ghcr.io/ublue-os/aurora-dx
+image-version: stable
+
+modules:
+
+    - type: files
+      files:
+        - source: system
+          destination: /
+
+    - type: rpm-ostree
+      repos:
+        - https://copr.fedorainfracloud.org/coprs/solopasha/hyprland/repo/fedora-%OS_VERSION%/solopasha-hyprland-fedora-%OS_VERSION%.repo
+      install:
+        - fuzzel
+        - hyprland
+        - hyprlock
+        - hypridle
+        - hyprpaper
+        - hyprshot
+        - hyprsunset
+        - swww
+        - waybar
+        - xdg-desktop-portal-hyprland
+        - blueman
+        - kwallet
+        - pam-kwallet
+        - qt5-qtgraphicaleffects
+        - qt5-qtquickcontrols2
+        - qt5-qtsvg
+        - sddm
+        - sddm-themes
+
+
+      remove:
+        # KDE Plasma Desktop & Window Manager
+        - sddm-breeze
+        - sddm-wayland-plasma
+        - plasma-lookandfeel-fedora
+        - plasma-print-manager-libs
+        - plasma-print-manager
+        - plasma-desktop
+        - plasma-workspace
+        - kwin
+
+    - type: systemd
+      system:
+        enabled:
+          - sddm-boot.service
+
+    - type: signing
