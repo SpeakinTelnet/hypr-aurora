@@ -1,12 +1,19 @@
 import QtQuick 2.15
-import QtQuick.Window 2.15
+import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
+import QtQuick.Effects
+import QtMultimedia
+
 import "Components"
 
-Item {
+Pane {
   id: root
   height: Screen.height
   width: Screen.width
+
+  font.family: config.Font
+  font.pointSize: config.FontSize !== "" ? config.FontSize : parseInt(height / 80) || 13
+    
   Rectangle {
     id: background
     anchors.fill: parent
@@ -37,7 +44,7 @@ Item {
       margins: 50
     }
     Clock {
-      id: time
+      id: clock
       visible: config.ClockEnabled == "true" ? true : false
     }
     LoginPanel {
