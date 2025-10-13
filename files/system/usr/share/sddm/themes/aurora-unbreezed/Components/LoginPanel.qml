@@ -86,78 +86,66 @@ Item {
       height: inputHeight
       width: parent.width
     }
-    PasswordField {
-      id: passwordField
-      height: inputHeight
+    Row {
+      spacing: 8
       width: parent.width
-      onAccepted: loginButton.clicked()
-    }
-    Button {
-      id: loginButton
-      height: inputHeight
-      width: parent.width
-      enabled: user != "" && password != "" ? true : false
-      hoverEnabled: true
-      contentItem: Text {
-        id: buttonText
-        renderType: Text.NativeRendering
-        font {
-          family: config.Font
-          pointSize: config.FontSize
-          bold: true
+      PasswordField {
+        id: passwordField
+        height: inputHeight
+        width: parent.width - loginButton.width - 8
+        onAccepted: loginButton.clicked()
+      }
+      Button {
+        id: loginButton
+        height: inputHeight
+        width: inputHeight
+        enabled: user != "" && password != "" ? true : false
+        hoverEnabled: true
+        contentItem: Text {
+          id: buttonText
+          renderType: Text.NativeRendering
+          font {
+            family: config.Font
+            pointSize: config.FontSize * 1.5
+            bold: true
+          }
+          horizontalAlignment: Text.AlignHCenter
+          verticalAlignment: Text.AlignVCenter
+          color: "#CDD6F4"
+          text: ">"
         }
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-        color: "#11111B"
-        text: "Login"
-      }
-      background: Rectangle {
-        id: buttonBackground
-        color: "#CBA6F7"
-        radius: 3
-      }
-      states: [
-        State {
-          name: "pressed"
-          when: loginButton.down
-          PropertyChanges {
-            target: buttonBackground
-            color: "#A6ADC8"
+        background: Rectangle {
+          id: buttonBackground
+          color: "#313244"
+          radius: 3
+        }
+        states: [
+          State {
+            name: "pressed"
+            when: loginButton.down
+            PropertyChanges {
+              target: buttonBackground
+              color: "#45475A"
+            }
+          },
+          State {
+            name: "hovered"
+            when: loginButton.hovered
+            PropertyChanges {
+              target: buttonBackground
+              color: "#45475A"
+            }
           }
-          PropertyChanges {
-            target: buttonText
-          }
-        },
-        State {
-          name: "hovered"
-          when: loginButton.hovered
-          PropertyChanges {
-            target: buttonBackground
-            color: "#A6ADC8"
-          }
-          PropertyChanges {
-            target: buttonText
-          }
-        },
-        State {
-          name: "enabled"
-          when: loginButton.enabled
-          PropertyChanges {
-            target: buttonBackground
-          }
-          PropertyChanges {
-            target: buttonText
+        ]
+        transitions: Transition {
+          PropertyAnimation {
+            properties: "color"
+            duration: 300
           }
         }
-      ]
-      transitions: Transition {
-        PropertyAnimation {
-          properties: "color"
-          duration: 300
+        onClicked: {
+          sddm.login(user, password, session)
         }
-      }
-      onClicked: {
-        sddm.login(user, password, session)
       }
     }
   }
