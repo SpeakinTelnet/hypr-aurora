@@ -51,29 +51,8 @@ Item {
       verticalCenter: parent.verticalCenter
       horizontalCenter: parent.horizontalCenter
     }
-    Rectangle {
-      visible: config.UserIcon == "true" ? true : false
-      width: inputHeight * 5.7 ; height: inputHeight * 5.7
-      color: "transparent"
-      Image {
-        source: Qt.resolvedUrl("../assets/defaultIcon.png")
-        height: parent.width
-        width: parent.width
-      }
-      Image {
-        // common icon path for KDE and GNOME
-        source: Qt.resolvedUrl("/var/lib/AccountsService/icons/" + user)
-        height: parent.width
-        width: parent.width
-      }
-      Image {
-        source: Qt.resolvedUrl("../assets/ring.svg")
-        height: parent.width
-        width: parent.width
-      }
-      anchors {
-        horizontalCenter: parent.horizontalCenter
-      }
+    UserAvatar {
+      id: userAvatar
     }
     UserField {
       id: userField
