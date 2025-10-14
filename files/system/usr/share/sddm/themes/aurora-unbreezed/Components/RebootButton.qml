@@ -12,6 +12,10 @@ Item {
       height: inputHeight * 1.8
       width: inputHeight * 1.8
       anchors.horizontalCenter: parent.horizontalCenter
+      smooth: true
+      antialiasing: true
+      mipmap: true
+      sourceSize: Qt.size(width, height)
       MouseArea {
         anchors.fill: parent
         hoverEnabled: true
