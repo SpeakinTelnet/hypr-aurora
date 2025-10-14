@@ -2,6 +2,7 @@ import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 import QtQml.Models 2.15
+import org.kde.kirigami 2.20 as Kirigami
 import "../assets"
 
 Item {
@@ -20,7 +21,8 @@ Item {
     width: inputWidth * 1.2
     radius: 5
     visible: config.LoginBackground == "true" ? true : false
-    color: "#181825"
+    color: Kirigami.Theme.backgroundColor
+    opacity: 0.8
   }
   Column {
     id: loginSection
@@ -64,12 +66,12 @@ Item {
           }
           horizontalAlignment: Text.AlignHCenter
           verticalAlignment: Text.AlignVCenter
-          color: "#CDD6F4"
+          color: Kirigami.Theme.textColor
           text: ">"
         }
         background: Rectangle {
           id: buttonBackground
-          color: "#313244"
+          color: Kirigami.Theme.alternateBackgroundColor
           radius: 3
         }
         states: [
@@ -78,7 +80,7 @@ Item {
             when: loginButton.down
             PropertyChanges {
               target: buttonBackground
-              color: "#45475A"
+              color: Kirigami.Theme.highlightColor
             }
           },
           State {
@@ -86,7 +88,7 @@ Item {
             when: loginButton.hovered
             PropertyChanges {
               target: buttonBackground
-              color: "#45475A"
+              color: Kirigami.Theme.highlightColor
             }
           }
         ]

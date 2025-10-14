@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQml.Models 2.15
+import org.kde.kirigami 2.20 as Kirigami
 
 Item {
   property var session: sessionList.currentIndex
@@ -21,12 +22,12 @@ Item {
         font.bold: true
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
-        color: "#CDD6F4"
+        color: Kirigami.Theme.textColor
         text: name
       }
       background: Rectangle {
         id: sessionEntryBackground
-        color: "#45475A"
+        color: Kirigami.Theme.alternateBackgroundColor
         radius: 3
       }
       states: [
@@ -35,7 +36,7 @@ Item {
           when: sessionEntry.hovered
           PropertyChanges {
             target: sessionEntryBackground
-            color: "#585B70"
+            color: Kirigami.Theme.highlightColor
           }
         }
       ]
@@ -79,7 +80,7 @@ Item {
       text: "Other..."
       font.family: config.Font
       font.pointSize: config.FontSize
-      color: "white"
+      color: Kirigami.Theme.textColor
       anchors.horizontalCenter: parent.horizontalCenter
     }
   }
@@ -91,7 +92,7 @@ Item {
     padding: inputHeight / 10
     background: Rectangle {
       radius: 5.4
-      color: "#313244"
+      color: Kirigami.Theme.backgroundColor
     }
     contentItem: ListView {
       id: sessionList

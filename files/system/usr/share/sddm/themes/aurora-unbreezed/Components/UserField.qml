@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import org.kde.kirigami 2.20 as Kirigami
 
 TextField {
   id: userField
@@ -13,12 +14,12 @@ TextField {
     pointSize: config.FontSize
     bold: true
   }
-  color: "#CDD6F4"
+  color: Kirigami.Theme.textColor
   horizontalAlignment: Text.AlignHCenter
   placeholderText: "Username"
   text: userModel.lastUser
   background: Rectangle {
-    color: "#313244"
+    color: Kirigami.Theme.alternateBackgroundColor
     opacity: 0.1
     radius: 3
   }
@@ -28,7 +29,7 @@ TextField {
       when: userField.activeFocus
       PropertyChanges {
         target: userField
-        color: "#979eb6ff"
+        color: Kirigami.Theme.highlightedTextColor
       }
     },
     State {
@@ -36,7 +37,7 @@ TextField {
       when: userField.hovered
       PropertyChanges {
         target: userField
-        color: "#979eb6ff"
+        color: Kirigami.Theme.highlightedTextColor
       }
     }
   ]

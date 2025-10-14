@@ -3,6 +3,7 @@ import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
 import QtQuick.Effects
 import QtMultimedia
+import org.kde.kirigami 2.20 as Kirigami
 
 import "Components"
 
@@ -20,7 +21,7 @@ Pane {
     height: parent.height
     width: parent.width
     z: 0
-    color: "#1E1E2E"
+    color: Kirigami.Theme.backgroundColor
   }
   Image {
     id: backgroundImage

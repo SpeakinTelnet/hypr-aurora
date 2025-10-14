@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import org.kde.kirigami 2.20 as Kirigami
 
 
 Column {
@@ -12,7 +13,7 @@ Column {
 
         font.pointSize: root.font.pointSize * 6
         font.bold: true
-        color: "white"
+        color: Kirigami.Theme.textColor
         renderType: Text.QtRendering
 
         function updateTime() {
@@ -26,7 +27,7 @@ Column {
         anchors.horizontalCenter: parent.horizontalCenter
 
         font.pointSize: root.font.pointSize * 1.5
-        color: "white"
+        color: Kirigami.Theme.textColor
         renderType: Text.QtRendering
 
         function updateTime() {

@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import org.kde.kirigami 2.20 as Kirigami
 
 Item {
   implicitHeight: powerButton.height
@@ -27,7 +28,7 @@ Item {
       text: "Shut Down"
       font.family: config.Font
       font.pointSize: config.FontSize
-      color: "white"
+      color: Kirigami.Theme.textColor
       anchors.horizontalCenter: parent.horizontalCenter
     }
   }

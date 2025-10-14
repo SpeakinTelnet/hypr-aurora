@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import org.kde.kirigami 2.20 as Kirigami
 
 TextField {
   id: passwordField
@@ -9,17 +10,17 @@ TextField {
   echoMode: TextInput.Password
   passwordCharacter: "•"
   passwordMaskDelay: config.PasswordShowLastLetter
-  selectionColor: "#6C7086"
+  selectionColor: Kirigami.Theme.highlightColor
   renderType: Text.NativeRendering
   font.family: config.Font
   font.pointSize: config.FontSize
   font.bold: true
-  color: "#CDD6F4"
+  color: Kirigami.Theme.textColor
   horizontalAlignment: TextInput.AlignHCenter
   background: Rectangle {
     id: passFieldBackground
     radius: 3
-    color: "#313244"
+    color: Kirigami.Theme.alternateBackgroundColor
   }
   states: [
     State {
@@ -27,7 +28,7 @@ TextField {
       when: passwordField.activeFocus
       PropertyChanges {
         target: passFieldBackground
-        color: "#45475A"
+        color: Kirigami.Theme.backgroundColor
       }
     },
     State {
@@ -35,7 +36,7 @@ TextField {
       when: passwordField.hovered
       PropertyChanges {
         target: passFieldBackground
-        color: "#45475A"
+        color: Kirigami.Theme.backgroundColor
       }
     }
   ]
