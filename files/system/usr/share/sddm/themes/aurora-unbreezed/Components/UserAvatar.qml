@@ -7,8 +7,8 @@ Item {
   Rectangle {
     id: userAvatar
     visible: config.UserIcon == "true" ? true : false
-    width: inputHeight * 4 
-    height: inputHeight * 4
+    width: inputHeight * 3.5
+    height: inputHeight * 3.5
     color: "transparent"
     Image {
       source: Qt.resolvedUrl("../assets/defaultIcon.png")

@@ -10,7 +10,8 @@ Column {
 
         anchors.horizontalCenter: parent.horizontalCenter
 
-        font.pointSize: root.font.pointSize * 9
+        font.pointSize: root.font.pointSize * 6
+        font.bold: true
         color: "white"
         renderType: Text.QtRendering
 
@@ -23,8 +24,8 @@ Column {
         id: dateLabel
 
         anchors.horizontalCenter: parent.horizontalCenter
-        
-        font.pointSize: root.font.pointSize * 2
+
+        font.pointSize: root.font.pointSize * 1.5
         color: "white"
         renderType: Text.QtRendering
 
@@ -49,7 +50,7 @@ Column {
     }
 
     anchors {
-        margins: 10
+        margins: 30
         top: parent.top
         horizontalCenter: parent.horizontalCenter
     }

@@ -22,29 +22,9 @@ Item {
     visible: config.LoginBackground == "true" ? true : false
     color: "#181825"
   }
-  Row {
-    spacing: 40
-    anchors {
-      bottom: parent.bottom
-      horizontalCenter: parent.horizontalCenter
-      bottomMargin: 60
-    }
-    PowerButton {
-      id: powerButton
-    }
-    RebootButton {
-      id: rebootButton
-    }
-    SleepButton {
-      id: sleepButton
-    }
-    SessionPanel {
-      id: sessionPanel
-    }
-    z: 5
-  }
   Column {
-    spacing: 8
+    id: loginSection
+    spacing: 20
     z: 5
     width: inputWidth
     anchors {
@@ -121,6 +101,27 @@ Item {
         }
       }
     }
+  }
+  Row {
+    spacing: 80
+    anchors {
+      top: loginSection.bottom
+      topMargin: 100
+      horizontalCenter: parent.horizontalCenter
+    }
+    SleepButton {
+      id: sleepButton
+    }
+    RebootButton {
+      id: rebootButton
+    }
+    PowerButton {
+      id: powerButton
+    }
+    SessionPanel {
+      id: sessionPanel
+    }
+    z: 5
   }
   Connections {
     target: sddm

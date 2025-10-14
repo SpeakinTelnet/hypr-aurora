@@ -9,8 +9,8 @@ Item {
       spacing: 8
       Image {
         source: Qt.resolvedUrl("../assets/icons/system-suspend.svg")
-        height: inputHeight * 1.5
-        width: inputHeight * 1.5
+        height: inputHeight * 1.8
+        width: inputHeight * 1.8
         anchors.horizontalCenter: parent.horizontalCenter
         MouseArea {
           anchors.fill: parent
