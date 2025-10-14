@@ -5,14 +5,27 @@ import Qt5Compat.GraphicalEffects
 Item {
   implicitHeight: userAvatar.height
   implicitWidth: userAvatar.width
+
+  property string currentUser: user
+
+
+  function refreshAvatar(username) {
+    if (username) {
+      currentUser = username
+    }
+    // Force reload by clearing and resetting the source
+    userIcon.source = ""
+    userIcon.source = getUserAvatar()
+  }
+
   function getUserAvatar() {
     // Try multiple common locations for user avatars
     var avatarPaths = [
-      "/var/lib/AccountsService/icons/" + user,
-      "/home/" + user + "/.face",
-      "/home/" + user + "/.face.icon",
-      "/usr/share/pixmaps/faces/" + user + ".png",
-      "/usr/share/pixmaps/faces/" + user + ".jpg"
+      "/var/lib/AccountsService/icons/" + currentUser,
+      "/home/" + currentUser + "/.face",
+      "/home/" + currentUser + "/.face.icon",
+      "/usr/share/pixmaps/faces/" + currentUser + ".png",
+      "/usr/share/pixmaps/faces/" + currentUser + ".jpg"
     ]
 
     // Return first path (Qt will try to load and fallback if it fails)
@@ -20,7 +33,6 @@ Item {
   }
   Rectangle {
     id: userAvatar
-    visible: config.UserIcon == "true" ? true : false
     width: inputHeight * 3.5
     height: inputHeight * 3.5
     color: "transparent"

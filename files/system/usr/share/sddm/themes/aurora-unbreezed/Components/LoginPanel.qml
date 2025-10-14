@@ -17,7 +17,7 @@ Item {
       verticalCenter: parent.verticalCenter
       horizontalCenter: parent.horizontalCenter
     }
-    height: inputHeight * ( config.UserIcon == "true" ? 11.2 : 5.3 )
+    height: inputHeight * 11.2
     width: inputWidth * 1.2
     radius: 5
     visible: config.LoginBackground == "true" ? true : false
@@ -40,6 +40,10 @@ Item {
       id: userField
       height: inputHeight
       width: parent.width
+      // Connect user change signal to avatar refresh
+      onUserChanged: function(username) {
+        userAvatar.refreshAvatar(username)
+      }
     }
     Row {
       spacing: 8
