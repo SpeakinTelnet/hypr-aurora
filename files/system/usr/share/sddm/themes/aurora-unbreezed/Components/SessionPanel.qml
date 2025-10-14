@@ -86,7 +86,7 @@ Item {
   Popup {
     id: sessionPopup
     width: inputWidth + padding * 2
-    x: (sessionButton.width + sessionList.spacing) * -7.6
+    x: (sessionButton.width - sessionList.spacing)
     y: -(contentHeight + padding * 2) + sessionButton.height
     padding: inputHeight / 10
     background: Rectangle {
