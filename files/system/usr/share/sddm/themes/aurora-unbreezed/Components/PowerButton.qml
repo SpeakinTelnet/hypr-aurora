@@ -4,38 +4,27 @@ import QtQuick.Controls 2.15
 Item {
   implicitHeight: powerButton.height
   implicitWidth: powerButton.width
-  Button {
+  Column {
     id: powerButton
-    height: inputHeight
-    width: inputHeight
-    hoverEnabled: true
-    icon {
-      source: Qt.resolvedUrl("../icons/power.svg")
-      height: height
-      width: width
-      color: "#11111B"
-    }
-    background: Rectangle {
-      id: powerButtonBackground
-      radius: 3
-      color: "#F38BA8"
-    }
-    states: [
-      State {
-        name: "hovered"
-        when: powerButton.hovered
-        PropertyChanges {
-          target: powerButtonBackground
-          color: "#F5E0DC"
-        }
-      }
-    ]
-    transitions: Transition {
-      PropertyAnimation {
-        properties: "color"
-        duration: 300
+    spacing: 8
+    Image {
+      source: Qt.resolvedUrl("../assets/icons/system-shutdown.svg")
+      height: inputHeight * 1.5
+      width: inputHeight * 1.5
+      anchors.horizontalCenter: parent.horizontalCenter
+      MouseArea {
+        anchors.fill: parent
+        hoverEnabled: true
+        cursorShape: Qt.PointingHandCursor
+        onClicked: sddm.powerOff()
       }
     }
-    onClicked: sddm.powerOff()
+    Text {
+      text: "Shut Down"
+      font.family: config.Font
+      font.pointSize: config.FontSize
+      color: "white"
+      anchors.horizontalCenter: parent.horizontalCenter
+    }
   }
 }

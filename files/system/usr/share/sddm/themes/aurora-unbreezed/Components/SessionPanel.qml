@@ -54,57 +54,29 @@ Item {
       }
     }
   }
-  Button {
+  Column {
     id: sessionButton
-    height: inputHeight
-    width: inputHeight
-    hoverEnabled: true
-    icon {
-      source: Qt.resolvedUrl("../icons/settings.svg")
-      height: height
-      width: width
-      color: "#CDD6F4"
-    }
-    background: Rectangle {
-      id: sessionButtonBackground
-      color: "#313244"
-      radius: 3
-    }
-    states: [
-      State {
-        name: "pressed"
-        when: sessionButton.down
-        PropertyChanges {
-          target: sessionButtonBackground
-          color: "#45475A"
-        }
-      },
-      State {
-        name: "hovered"
-        when: sessionButton.hovered
-        PropertyChanges {
-          target: sessionButtonBackground
-          color: "#585B70"
-        }
-      },
-      State {
-        name: "selection"
-        when: sessionPopup.visible
-        PropertyChanges {
-          target: sessionButtonBackground
-          color: "#585B70"
+    spacing: 8
+    Image {
+      source: Qt.resolvedUrl("../assets/icons/system-user-prompt.svg")
+      height: inputHeight * 1.5
+      width: inputHeight * 1.5
+      anchors.horizontalCenter: parent.horizontalCenter
+      MouseArea {
+        anchors.fill: parent
+        hoverEnabled: true
+        cursorShape: Qt.PointingHandCursor
+        onClicked: {
+          sessionPopup.visible ? sessionPopup.close() : sessionPopup.open()
         }
       }
-    ]
-    transitions: Transition {
-      PropertyAnimation {
-        properties: "color"
-        duration: 150
-      }
     }
-    onClicked: {
-      sessionPopup.visible ? sessionPopup.close() : sessionPopup.open()
-      sessionButton.state = "pressed"
+    Text {
+      text: "Other..."
+      font.family: config.Font
+      font.pointSize: config.FontSize
+      color: "white"
+      anchors.horizontalCenter: parent.horizontalCenter
     }
   }
   Popup {

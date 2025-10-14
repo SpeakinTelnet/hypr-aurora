@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
+import QtQml.Models 2.15
 import "../assets"
 
 Item {
@@ -21,11 +22,12 @@ Item {
     visible: config.LoginBackground == "true" ? true : false
     color: "#181825"
   }
-  Column {
-    spacing: 8
+  Row {
+    spacing: 40
     anchors {
       bottom: parent.bottom
-      left: parent.left
+      horizontalCenter: parent.horizontalCenter
+      bottomMargin: 60
     }
     PowerButton {
       id: powerButton
@@ -35,14 +37,6 @@ Item {
     }
     SleepButton {
       id: sleepButton
-    }
-    z: 5
-  }
-  Column {
-    spacing: 8
-    anchors {
-      bottom: parent.bottom
-      right: parent.right
     }
     SessionPanel {
       id: sessionPanel

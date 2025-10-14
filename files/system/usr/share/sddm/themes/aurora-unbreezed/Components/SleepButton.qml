@@ -4,38 +4,27 @@ import QtQuick.Controls 2.15
 Item {
   implicitHeight: sleepButton.height
   implicitWidth: sleepButton.width
-  Button {
+  Column {
     id: sleepButton
-    height: inputHeight
-    width: inputHeight
-    hoverEnabled: true
-    icon {
-      source: Qt.resolvedUrl("../icons/sleep.svg")
-      height: height
-      width: width
-      color: "#11111B"
-    }
-    background: Rectangle {
-      id: sleepButtonBg
-      color: "#F38BA8"
-      radius: 3
-    }
-    states: [
-      State {
-        name: "hovered"
-        when: sleepButton.hovered
-        PropertyChanges {
-          target: sleepButtonBg
-          color: "#F5E0DC"
+      spacing: 8
+      Image {
+        source: Qt.resolvedUrl("../assets/icons/system-suspend.svg")
+        height: inputHeight * 1.5
+        width: inputHeight * 1.5
+        anchors.horizontalCenter: parent.horizontalCenter
+        MouseArea {
+          anchors.fill: parent
+          hoverEnabled: true
+          cursorShape: Qt.PointingHandCursor
+          onClicked: sddm.suspend()
         }
       }
-    ]
-    transitions: Transition {
-      PropertyAnimation {
-        properties: "color"
-        duration: 300
+      Text {
+        text: "Sleep"
+        font.family: config.Font
+        font.pointSize: config.FontSize
+        color: "white"
+        anchors.horizontalCenter: parent.horizontalCenter
       }
-    }
-    onClicked: sddm.suspend()
   }
 }
