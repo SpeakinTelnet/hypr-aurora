@@ -6,30 +6,50 @@ Item {
   implicitHeight: userAvatar.height
   implicitWidth: userAvatar.width
 
-  property string currentUser: user
+  property string currentUser: userModel.lastUser
 
+  // List of paths to try for user avatars, in priority order
+  property var avatarPaths: [
+    "/var/lib/AccountsService/icons/" + currentUser,
+    "/home/" + currentUser + "/.face",
+    "/home/" + currentUser + "/.face.icon",
+    "/usr/share/pixmaps/faces/" + currentUser + ".png",
+    "/usr/share/pixmaps/faces/" + currentUser + ".jpg"
+  ]
+  property int currentPathIndex: 0
 
   function refreshAvatar(username) {
     if (username) {
       currentUser = username
+      // Update avatar paths with new username
+      avatarPaths = [
+        "/var/lib/AccountsService/icons/" + currentUser,
+        "/home/" + currentUser + "/.face",
+        "/home/" + currentUser + "/.face.icon",
+        "/usr/share/pixmaps/faces/" + currentUser + ".png",
+        "/usr/share/pixmaps/faces/" + currentUser + ".jpg"
+      ]
     }
-    // Force reload by clearing and resetting the source
+    // Reset to first path and force reload by clearing and resetting the source
+    currentPathIndex = 0
     userIcon.source = ""
-    userIcon.source = getUserAvatar()
+    userIcon.source = avatarPaths[currentPathIndex]
   }
 
-  function getUserAvatar() {
-    // Try multiple common locations for user avatars
-    var avatarPaths = [
-      "/var/lib/AccountsService/icons/" + currentUser,
-      "/home/" + currentUser + "/.face",
-      "/home/" + currentUser + "/.face.icon",
-      "/usr/share/pixmaps/faces/" + currentUser + ".png",
-      "/usr/share/pixmaps/faces/" + currentUser + ".jpg"
-    ]
-
-    // Return first path (Qt will try to load and fallback if it fails)
-    return avatarPaths[0]
+  function tryNextAvatar() {
+    // Fallback implementation based on Qt Forum solution:
+    // https://forum.qt.io/topic/7548/solved-creating-a-qml-image-that-will-load-different-source-if-one-source-fails-to-load
+    //
+    // Key insight: When status == Image.Error, trying to load another image that also errors
+    // will NOT trigger onStatusChanged again. We must clear the source first to reset the state.
+    if (currentPathIndex < avatarPaths.length - 1) {
+      currentPathIndex++
+      userIcon.source = ""  // Critical: clear source to reset status from Error to Null
+      userIcon.source = avatarPaths[currentPathIndex]
+    } else {
+      // All paths failed, hide the avatar ring
+      avatarRing.visible = false
+    }
   }
   Rectangle {
     id: userAvatar
@@ -41,7 +61,7 @@ Item {
       property bool rounded: true
       property bool adapt: true
       id: userIcon
-      source: getUserAvatar()
+      source: avatarPaths[currentPathIndex]
       anchors.fill: parent
       fillMode: Image.PreserveAspectCrop
       cache: false
@@ -51,7 +71,8 @@ Item {
         if (status === Image.Ready) {
           avatarRing.visible = true
         } else if (status === Image.Error) {
-          avatarRing.visible = false
+          // Current path failed, try next avatar path
+          tryNextAvatar()
         }
       }
       layer.enabled: rounded
