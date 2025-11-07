@@ -7,13 +7,15 @@ import org.kde.kirigami 2.20 as Kirigami
 
 import "Components"
 
-Pane {
+Item {
   id: root
   height: Screen.height
   width: Screen.width
 
-  font.family: config.Font
-  font.pointSize: config.FontSize !== "" ? config.FontSize : parseInt(height / 80) || 13
+  property font font: Qt.font({
+    family: config.Font,
+    pointSize: config.FontSize !== "" ? config.FontSize : parseInt(height / 80) || 13
+  })
     
   Rectangle {
     id: background
