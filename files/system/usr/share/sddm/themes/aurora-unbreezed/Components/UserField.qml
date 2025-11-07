@@ -76,6 +76,13 @@ Item {
     horizontalAlignment: Text.AlignHCenter
     placeholderText: "Username"
     text: userModel.lastUser
+
+    Component.onCompleted: {
+      // Emit userChanged signal on initial load to sync the user property
+      if (text !== "") {
+        userChanged(text)
+      }
+    }
     background: Rectangle {
       color: Kirigami.Theme.alternateBackgroundColor
       opacity: 0.1

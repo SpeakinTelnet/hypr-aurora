@@ -42,6 +42,7 @@ Item {
       width: parent.width
       // Connect user change signal to avatar refresh
       onUserChanged: function(username) {
+        user = username
         userAvatar.refreshAvatar(username)
       }
     }
