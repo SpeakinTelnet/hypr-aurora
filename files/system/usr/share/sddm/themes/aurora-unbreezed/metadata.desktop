@@ -1,0 +1,13 @@
+[SddmGreeterTheme]
+Name=Aurora Unbreezed
+Description=A redo of the Aurora-breeze theme without breeze
+Type=sddm-theme
+Version=1.0
+Screenshot=preview.png
+MainScript=Main.qml
+ConfigFile=theme.conf
+TranslationsDirectory=translations
+Theme-Id=aurora-unbreezed
+Theme-API=2.0
+License=MIT
+QtVersion=6

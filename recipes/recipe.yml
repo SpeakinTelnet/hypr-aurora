@@ -40,7 +40,6 @@ modules:
         # KDE Plasma Desktop & Window Manager
         - sddm-breeze
         - sddm-wayland-plasma
-        - plasma-lookandfeel-fedora
         - plasma-print-manager-libs
         - plasma-print-manager
         - plasma-desktop
