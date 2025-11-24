@@ -18,6 +18,8 @@ modules:
       install:
         - fuzzel
         - hyprland
+        - hyprland-qtsupport
+        - hyprland-qtutils
         - hyprlock
         - hypridle
         - hyprpaper
