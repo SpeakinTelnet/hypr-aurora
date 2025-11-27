@@ -20,7 +20,7 @@ modules:
       install:
         - fuzzel
         - hyprland
-        - hyprland-qtutils
+        - hyprland-guiutils
         - hyprlock
         - hypridle
         - hyprpaper
