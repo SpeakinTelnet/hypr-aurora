@@ -42,7 +42,7 @@ modules:
       remove:
         # KDE Plasma Desktop & Window Manager
         # - sddm-breeze
-        - sddm-wayland-plasma
+        # - sddm-wayland-plasma
         - plasma-print-manager-libs
         - plasma-print-manager
         - plasma-desktop
