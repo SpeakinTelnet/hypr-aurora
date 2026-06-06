@@ -54,6 +54,7 @@ modules:
         - plasma-desktop
         - plasma-workspace
         - kwin
+        - xwaylandvideobridge
 
     - type: systemd
       system:
