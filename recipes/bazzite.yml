@@ -1,0 +1,64 @@
+---
+name: hypr-bazzite
+description: This is based on bazzite with the single goal to make it hyprland based.
+
+base-image: ghcr.io/ublue-os/bazzite
+image-version: stable
+
+modules:
+
+    - type: files
+      files:
+        - source: system
+          destination: /
+
+    - type: rpm-ostree
+      repos:
+        # - https://copr.fedorainfracloud.org/coprs/craftidore/wayblueorg-hyprland/repo/fedora-%OS_VERSION%/craftidore-wayblueorg-hyprland-fedora-%OS_VERSION%.repo
+        - https://copr.fedorainfracloud.org/coprs/lionheartp/Hyprland/repo/fedora-%OS_VERSION%/lionheartp-hyprland-fedora-%OS_VERSION%.repo
+        # Add lionheartp repo while we see if solopasha will continue maintaining the copr.
+        # - https://copr.fedorainfracloud.org/coprs/solopasha/hyprland/repo/fedora-%OS_VERSION%/solopasha-hyprland-fedora-%OS_VERSION%.repo
+      install:
+        - fuzzel
+        - hyprland
+        - hyprland-guiutils
+        - hyprlock
+        - hypridle
+        - hyprpaper
+        - hyprshot
+        - hyprsunset
+        - awww
+        - waybar
+        - xdg-desktop-portal-hyprland
+        - blueman
+        - kwallet
+        - pam-kwallet
+        - qt5-qtgraphicaleffects
+        - qt5-qtquickcontrols2
+        - qt5-qtsvg
+        - sddm
+        - sddm-themes
+
+
+      remove:
+        # KDE Plasma Desktop & Window Manager
+        # - sddm-breeze
+        # - sddm-wayland-plasma
+        - kcm-plasmalogin
+        - kde-settings-plasmalogin
+        - plasma-login-manager      # requires kwin-wayland
+        - plasma-lookandfeel-fedora # requires plasma-workspace
+        - plasma-setup              # requires plasma-desktop QML module
+        - plasma-print-manager-libs
+        - plasma-print-manager
+        - plasma-desktop
+        - plasma-workspace
+        - kwin
+        - xwaylandvideobridge
+
+    - type: systemd
+      system:
+        enabled:
+          - sddm-boot.service
+
+    - type: signing
