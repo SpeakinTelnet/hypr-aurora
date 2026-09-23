@@ -1,0 +1,9 @@
+---
+name: hypr-aurora
+description: This is based on Aurora(dx) with the single goal to make it hyprland based.
+
+base-image: ghcr.io/ublue-os/aurora-dx
+image-version: stable
+
+modules:
+  - from-file: hyprland.yml

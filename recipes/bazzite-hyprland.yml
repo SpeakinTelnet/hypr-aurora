@@ -1,0 +1,9 @@
+---
+name: hypr-bazzite
+description: This is based on bazzite with the single goal to make it hyprland based.
+
+base-image: ghcr.io/ublue-os/bazzite
+image-version: stable
+
+modules:
+  - from-file: hyprland.yml
