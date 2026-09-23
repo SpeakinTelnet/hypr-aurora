@@ -11,7 +11,6 @@ modules:
           - https://copr.fedorainfracloud.org/coprs/lionheartp/Hyprland/repo/fedora-%OS_VERSION%/lionheartp-hyprland-fedora-%OS_VERSION%.repo
       install:
         packages:
-          - dunst
           - fuzzel
           - hyprland
           - hyprland-guiutils
@@ -20,7 +19,6 @@ modules:
           - hyprpaper
           - hyprshot
           - hyprsunset
-          - hyperpolkitagent
           - awww
           - waybar
           - xdg-desktop-portal-hyprland
