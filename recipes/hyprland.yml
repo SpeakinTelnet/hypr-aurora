@@ -32,6 +32,7 @@ modules:
           - qt5-qtsvg
           - sddm
           - sddm-themes
+          - sddm-wayland-sway
       remove:
         packages:
           # KDE Plasma Desktop & Window Manager
@@ -47,6 +48,7 @@ modules:
           - plasma-desktop
           - plasma-workspace
           - kwin
+          - sddm-wayland-generic
           - xwaylandvideobridge
 
     - type: systemd
