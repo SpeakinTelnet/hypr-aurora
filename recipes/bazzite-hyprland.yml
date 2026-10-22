@@ -10,6 +10,9 @@ modules:
     repos:
       files:
         - https://copr.fedorainfracloud.org/coprs/bazzite-org/bazzite-multilib/repo/fedora-%OS_VERSION%/bazzite-org-bazzite-multilib-fedora-%OS_VERSION%.repo 
+    remove:
+      packages:
+        - terra-xorg-x11-server-Xwayland 
     install:
       packages:
         - xorg-x11-server-Xwayland 
