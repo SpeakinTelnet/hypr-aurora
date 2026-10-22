@@ -6,4 +6,12 @@ base-image: ghcr.io/ublue-os/bazzite
 image-version: stable
 
 modules:
+  - type: dnf
+    repos:
+      files:
+        - https://copr.fedorainfracloud.org/coprs/bazzite-org/bazzite-multilib/repo/fedora-%OS_VERSION%/bazzite-org-bazzite-multilib-fedora-%OS_VERSION%.repo 
+    install:
+      packages:
+        - xorg-x11-server-Xwayland 
+
   - from-file: hyprland.yml
